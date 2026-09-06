@@ -22,19 +22,13 @@ In Wisp:
     run-server selector-handler '(#:port 7088)
 
 ## Running a Server
-Guile doesn't search .w files for modules automatically, so you will
-need to either rename erthworm.w to "erthworm" or make a symlink called
-"erthworm" that points to erthworm.w.  On my system, I do this:
-
-    $ ln -s erthworm.w erthworm
-
 Guile must have access to both Wisp (if you are using the Wisp code
 directly) and erthworm.  To that end, you may need to execute your
 server in this way or something similar:
 
     $ export WISPDIR=/home/user/Downloads/wisp-0.8.6  # Depending on where you have Wisp installed/downloaded.
     $ export ERTHWORMDIR=.                            # Depending on where you have erthworm installed/downloaded.
-    $ guile-2.0 -L $WISPDIR --language=wisp -L $ERTHWORMDIR -s server.w
+    $ guile-2.0 -L $WISPDIR --language=wisp -x .w -L $ERTHWORMDIR -s server.w
 
 If you follow these steps, the server should start up fine.
 
